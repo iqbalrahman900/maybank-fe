@@ -14,7 +14,7 @@ const initialState: ProductState = {
 };
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const response = await fetch('https://13.213.59.244/api/products');
+  const response = await fetch('https://54.254.44.180/api/products');
   return response.json();
 });
 
@@ -22,7 +22,7 @@ export const addProduct = createAsyncThunk(
     'products/addProduct', 
     async (product: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>) => {
       try {
-        const response = await fetch('https://13.213.59.244/api/products', {
+        const response = await fetch('https://54.254.44.180/api/products', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const addProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk('products/updateProduct', 
   async ({ id, product }: { id: string; product: Partial<Product> }) => {
-    const response = await fetch(`https://13.213.59.244/api/products/${id}`, {
+    const response = await fetch(`https://54.254.44.180/api/products/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const updateProduct = createAsyncThunk('products/updateProduct',
 });
 
 export const deleteProduct = createAsyncThunk('products/deleteProduct', async (id: string) => {
-  await fetch(`https://13.213.59.244/api/products/${id}`, {
+  await fetch(`https://54.254.44.180/api/products/${id}`, {
     method: 'DELETE',
   });
   return id;
